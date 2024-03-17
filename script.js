@@ -30,25 +30,37 @@ let userChoice = prompt('Even or Odd?').toLowerCase();
 let userNumber = parseInt(prompt('type a number between 1 and 5'));
 let agentNumber = RndNumberGen(1,5);
 
-if (userNumber > 5){
-    console.log('Not valid: choose a number between 1 and 5');
-} else if (userNumber < 1){
-    console.log('Not valid: choose a number between 1 and 5');
-} else {
-    if (parityCheck(userNumber, agentNumber) == userChoice){
-        console.log('Result: ' + parityCheck (userNumber, agentNumber));
-        console.log('Your choice: ' + userChoice);
-        console.log('You won');
-        console.log('Your number: ' + userNumber);
-        console.log('Agent number: ' + agentNumber);
-    } else if (parityCheck (userNumber, agentNumber) != userChoice){
-        console.log(parityCheck (userNumber, agentNumber));
-        console.log('Your choice: ' + userChoice);
-        console.log('You lost');
-        console.log('Your number: ' + userNumber);
-        console.log('Agent number: ' + agentNumber);
-    }
-};
+whoWin();
+
+function whoWin(){
+    if (userChoice != 'odd' && userChoice != 'even'){
+        return 'Learn the rules and try again';
+    };
+    if (userNumber > 5){
+        console.log('Not valid: choose a number between 1 and 5');
+        return 'Not valid: choose a number between 1 and 5'
+    } else if (userNumber < 1){
+        console.log('Not valid: choose a number between 1 and 5');
+        return 'Not valid: choose a number between 1 and 5'
+    } else {
+        if (parityCheck(userNumber, agentNumber) == userChoice){
+            console.log('Result: ' + parityCheck (userNumber, agentNumber));
+            console.log('Your choice: ' + userChoice);
+            console.log('You won');
+            console.log('Your number: ' + userNumber);
+            console.log('Agent number: ' + agentNumber);
+        } else if (parityCheck (userNumber, agentNumber) != userChoice){
+            console.log(parityCheck (userNumber, agentNumber));
+            console.log('Your choice: ' + userChoice);
+            console.log('You lost');
+            console.log('Your number: ' + userNumber);
+            console.log('Agent number: ' + agentNumber);
+        }
+    };
+}
+console.log(whoWin());
+
+
 
 function parityCheck (num1, num2){
     let result = num1 + num2;
