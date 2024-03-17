@@ -4,7 +4,7 @@ Chiedere all’utente di inserire una parola
 Creare una funzione per capire se la parola inserita è palindroma
 */
 
-const userWord = prompt('Type a word');
+const userWord = prompt('Type a word').toLowerCase();
 //isPalindrome(userWord);
 console.log(isPalindrome(userWord));
 
@@ -25,5 +25,39 @@ Sommiamo i due numeri
 Stabiliamo se la somma dei due numeri è pari o dispari (usando una funzione)
 Dichiariamo chi ha vinto.
 */
+
+let userChoice = prompt('Even or Odd?').toLowerCase();
+let userNumber = parseInt(prompt('type a number between 1 and 5'));
+let agentNumber = RndNumberGen(1,5);
+
+if (userNumber > 5){
+    console.log('Not valid: choose a number between 1 and 5');
+} else if (userNumber < 1){
+    console.log('Not valid: choose a number between 1 and 5');
+} else {
+    if (parityCheck(userNumber, agentNumber) == userChoice){
+        console.log('Result: ' + parityCheck (userNumber, agentNumber));
+        console.log('Your choice: ' + userChoice);
+        console.log('You won');
+        console.log('Your number: ' + userNumber);
+        console.log('Agent number: ' + agentNumber);
+    } else if (parityCheck (userNumber, agentNumber) != userChoice){
+        console.log(parityCheck (userNumber, agentNumber));
+        console.log('Your choice: ' + userChoice);
+        console.log('You lost');
+        console.log('Your number: ' + userNumber);
+        console.log('Agent number: ' + agentNumber);
+    }
+};
+
+function parityCheck (num1, num2){
+    let result = num1 + num2;
+    if(result % 2 === 0){
+        return 'even'
+    } else {
+        return 'odd'
+    }
+};
+
 
 
